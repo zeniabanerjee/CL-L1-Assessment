@@ -1,4 +1,4 @@
-# Caravel Labs L1 Engineer Hiring Assessment
+# Caravel Labs Level-1 Engineer Hiring Assessment
 
 ### NOTE: If you are not able to create a branch and push to this origin, please fork this repoistory and make a Pull Request
 
