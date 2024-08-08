@@ -4,33 +4,48 @@
 
 [Click here to fork this repo](https://https://github.com/CaravelLabs/l1-engineer-hiring-assessment/fork)
 
+## Table of Contents
+- [Task Details](#task-details)
+- [API Documentation](#api-documentation)
+- [Data Model Documentation](#data-model-documentation)
+- [Expectations](#expectations)
+- [Pull Request (PR) Guidelines](#pull-request-pr-guidelines)
+- [Documentation](#documentation)
+- [Getting Started](#getting-started)
+
 ## Task Details
 
-**Objective:**
+<details>
+<summary>Objective</summary>
 The project aims to develop a comprehensive project management system with robust features for task assignment, user role management, and secure API interactions. The system will streamline the workflow of project teams by enabling administrators to efficiently manage projects and team members, ensuring that tasks are completed accurately and on time.
+</details>
 
-**Key Features:**
+<details>
+<summary>Key Features</summary>
 
-- *Project Management:*
-    - Create, update, and archive projects.
-    - Add and remove project members.
-    - Assign specific roles to users such as Contributors and Reviewers.
-    - Ensure project completion logic is enforced, requiring all tasks to be completed before marking the project as complete.
-- *Task Management:*
-    - Automatically generate initial tasks on program initialization.
-    - Enforce task group completion order, generating tasks from the next group only after the current group tasks are completed.
-    - Allow specific personas to complete tasks, with tasks moving to completed status once done.
-- *User Role Management:*
-    - Assign and modify user roles, ensuring that all users have a designated role.
-    - Reflect role changes immediately in user permissions.
+- **Project Management:**
+  - Create, update, and archive projects.
+  - Add and remove project members.
+  - Assign specific roles to users such as Contributors and Reviewers.
+  - Ensure project completion logic is enforced, requiring all tasks to be completed before marking the project as complete.
+- **Task Management:**
+  - Automatically generate initial tasks on program initialization.
+  - Enforce task group completion order, generating tasks from the next group only after the current group tasks are completed.
+  - Allow specific personas to complete tasks, with tasks moving to completed status once done.
+- **User Role Management:**
+  - Assign and modify user roles, ensuring that all users have a designated role.
+  - Reflect role changes immediately in user permissions.
+
+</details>
 
 ## API Documentation
 
-### Project Management API
+<details>
+<summary>Project Management API</summary>
 
 ### Endpoints
 
-### POST /api/projects
+#### POST /api/projects
 
 **Description:** Create a new project.
 
@@ -48,7 +63,7 @@ The project aims to develop a comprehensive project management system with robus
 - **403 Forbidden:**
   - `message`: 'Forbidden: Only admins can manage projects'
 
-### DELETE /api/projects
+#### DELETE /api/projects
 
 **Description:** Delete an existing project.
 
@@ -64,7 +79,7 @@ The project aims to develop a comprehensive project management system with robus
 - **403 Forbidden:**
   - `message`: 'Forbidden: Only admins can manage projects'
 
-### GET /api/projects
+#### GET /api/projects
 
 **Description:** Fetch all projects.
 
@@ -73,11 +88,14 @@ The project aims to develop a comprehensive project management system with robus
   - `message`: 'Projects fetched'
   - `projects`: An array of project objects.
 
-### Task Management API
+</details>
+
+<details>
+<summary>Task Management API</summary>
 
 ### Endpoints
 
-### GET /api/tasks
+#### GET /api/tasks
 
 **Description:** Fetch tasks by status.
 
@@ -89,7 +107,7 @@ The project aims to develop a comprehensive project management system with robus
   - `message`: 'Tasks fetched'
   - `tasks`: An array of task objects.
 
-### PUT /api/tasks
+#### PUT /api/tasks
 
 **Description:** Update or complete a task.
 
@@ -115,7 +133,7 @@ The project aims to develop a comprehensive project management system with robus
 - **403 Forbidden:**
   - `message`: 'Forbidden: Only approvers can update tasks'
 
-### DELETE /api/tasks
+#### DELETE /api/tasks
 
 **Description:** Delete a task.
 
@@ -129,11 +147,14 @@ The project aims to develop a comprehensive project management system with robus
 - **403 Forbidden:**
   - `message`: 'Forbidden: Only approvers can delete tasks'
 
-### User Management API
+</details>
+
+<details>
+<summary>User Management API</summary>
 
 ### Endpoints
 
-### GET /api/users
+#### GET /api/users
 
 **Description:** Fetch all users.
 
@@ -142,7 +163,7 @@ The project aims to develop a comprehensive project management system with robus
   - `message`: 'Users fetched'
   - `users`: An array of user objects.
 
-### POST /api/users
+#### POST /api/users
 
 **Description:** Add a new user.
 
@@ -154,7 +175,7 @@ The project aims to develop a comprehensive project management system with robus
   - `message`: 'User added'
   - `user`: The created user object.
 
-### PUT /api/users
+#### PUT /api/users
 
 **Description:** Update a user's role for a specific project.
 
@@ -171,28 +192,33 @@ The project aims to develop a comprehensive project management system with robus
 - **500 Internal Server Error:**
   - `message`: 'Failed to update role'
 
+</details>
 
 ## Data Model Documentation
 
-### User Model
+<details>
+<summary>User Model</summary>
 
-_Attributes_
+### Attributes
 - `id`: The unique identifier of the user.
 - `project`: An object containing the project-specific role of the user:
   - `projectId`: The ID of the project.
   - `projectRole`: The role of the user in the project (e.g., 'admin', 'contributor', 'reviewer', 'approver').
 - `role`: The general role of the user (e.g., 'admin', 'staff').
 
-_Methods_
+### Methods
 - `getUsers()`: Returns the list of all users.
 - `addUser(id: string, role: string)`: Adds a new user with the given ID and role.
 - `getUserById(id: string)`: Returns the user with the specified ID.
 - `updateUserRole(userId: string, newRole: string, projectId: string)`: Updates the role of the user for a specific project.
 - `initializeUsers()`: Initializes a list of predefined users for testing purposes.
 
-### Project Model
+</details>
 
-_Attributes_
+<details>
+<summary>Project Model</summary>
+
+### Attributes
 - `id`: The unique identifier of the project.
 - `name`: The name of the project.
 - `members`: An object containing the IDs of users assigned to specific roles:
@@ -201,14 +227,17 @@ _Attributes_
   - `reviewer`: The ID of the reviewer.
   - `admin`: The ID of the admin.
 
-_Methods_
+### Methods
 - `getProjects()`: Returns the list of all projects.
 - `createProject(name: string, contributorId: string, approverId: string, reviewerId: string, adminId: string)`: Creates a new project with the specified members and updates their roles.
 - `deleteProject(projectId: string)`: Deletes the project with the specified ID.
 
-### Task Model
+</details>
 
-_Attributes_
+<details>
+<summary>Task Model</summary>
+
+### Attributes
 - `id`: The unique identifier of the task.
 - `title`: The title of the task.
 - `description`: The description of the task.
@@ -216,7 +245,7 @@ _Attributes_
 - `assignedTo`: The role assigned to complete the task.
 - `status`: The current status of the task (e.g., 'active', 'pending', 'completed').
 
-_Methods_
+### Methods
 - `initializeProjectTasks(projectId: string)`: Initializes the tasks for a project using a predefined task list.
 - `getTasks(status?: string)`: Returns the list of tasks, optionally filtered by status.
 - `updateTask(taskId: number, updates: Partial<Task>, userId: string)`: Updates the task with the specified ID if the user has the approver role.
@@ -224,37 +253,43 @@ _Methods_
 - `deleteTask(taskId: number, userId: string)`: Deletes the task if the user has the approver role.
 - `createTask(title: string, description: string, group: number, assignedTo: string, userId: string)`: Creates a new task with the specified attributes if the user has the approver role.
 
-
-<!-- ## Design
-
-We have added a sample design documentation for you to better understand the flow of the task.
-<br>
-[Sample Design Documentation](https://www.figma.com/design/oBC0zPGhL1VzV2Bm31D2bR/Task-Board-Documentation?node-id=17-2327) -->
-
+</details>
 
 ## Expectations
+
+<details>
+<summary>Click to expand</summary>
+
 - Fork the repository and clone it.
 - Design the data model, handler functions and the APIs based on the documentation provided above
-- Implement the UI with a framework of your choice according to the sample design provided ( _MaterialUI/AntDesign Recommended_ ).
+- Implement the UI with a framework of your choice according to the sample design provided (_MaterialUI/AntDesign Recommended_).
 - Please follow the data model and the handler methods accurately with proper naming (as mentioned above) so that the tests run successfully.
 - **DO NOT CHANGE THE NAMES OF THE FUNCTIONS OTHERWISE THE TESTS WON'T RUN.**
 - Variables should be named properly according to camelCase.
-- Maintain the casing as showcased in the repository. [ camel Casing and Pascal Casing where it should be]
-- Command to run test : ```npm test``` [ inside web folder ]
+- Maintain the casing as showcased in the repository. [camel Casing and Pascal Casing where it should be]
+- Command to run test: `npm test` [inside web folder]
 
-- For Brownie Points :
-    - Implement the solution based on a standard design pattern ( Strategy, MVC, MVVM , Singleton , Factory ), solid principles and coding standards and practices( eg, variable naming, formatted code, oops principles )
-    - UI enhancement on the original screens
-    - Writing own test cases ( as unit tests )
-    <br>
-    **Please remember it is important to pass the basic test cases. The rest will only be taken into consideration if you pass the original test cases. Tampering/Changing original test cases will lead to disqualification**
+- For Brownie Points:
+  - Implement the solution based on a standard design pattern (Strategy, MVC, MVVM, Singleton, Factory), solid principles, and coding standards and practices (e.g., variable naming, formatted code, OOP principles).
+  - UI enhancement on the original screens.
+  - Writing own test cases (as unit tests).
+
+  **Please remember it is important to pass the basic test cases. The rest will only be taken into consideration if you pass the original test cases. Tampering/Changing original test cases will lead to disqualification**
+
+</details>
 
 ## Pull Request (PR) Guidelines
-- Every Person should **NOT** make more than 1 pull request.
+
+<details>
+<summary>Click to expand</summary>
+
+- Every person should **NOT** make more than 1 pull request.
 - Pull Requests should have screenshots of UI and a Video Walkthrough attached with proper description behind your work.
 - Please make sure all the status checks are passed after you make the PR. We have the following status checks:
-    - SonarCloud: Code quality analysis
-    - PR Validation: Build Validation and Test Success Validation
+  - SonarCloud: Code quality analysis.
+  - PR Validation: Build Validation and Test Success Validation.
+
+</details>
 
 
 ## Documentation
