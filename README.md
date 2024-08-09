@@ -8,6 +8,7 @@
 - [Task Details](#task-details)
 - [API Documentation](#api-documentation)
 - [Data Model Documentation](#data-model-documentation)
+- [Design](#design)
 - [Expectations](#expectations)
 - [Pull Request (PR) Guidelines](#pull-request-pr-guidelines)
 - [Documentation](#documentation)
@@ -254,6 +255,12 @@ The project aims to develop a comprehensive project management system with robus
 - `createTask(title: string, description: string, group: number, assignedTo: string, userId: string)`: Creates a new task with the specified attributes if the user has the approver role.
 
 </details>
+
+## Design
+
+We have added a sample design documentation for you to better understand the flow of the task.
+<br>
+[Sample Design Documentation](https://www.figma.com/design/0kv12pmBqOgP4jeL3P3tP7/L1-Assessment?node-id=26-19744&t=IOwpn43ImLzt0Ad3-1)
 
 ## Expectations
 
