@@ -279,6 +279,7 @@ We have added a sample design documentation for you to better understand the flo
 <summary>Click to expand</summary>
 
 - Fork the repository and clone it.
+- The Authentication and Login logic and UI implementation is upto you and your creativity.
 - Design the data model, handler functions and the APIs based on the documentation provided above
 - Implement the UI with a framework of your choice according to the sample design provided (_MaterialUI/AntDesign Recommended_).
 - Please follow the data model and the handler methods accurately with proper naming (as mentioned above) so that the tests run successfully.
