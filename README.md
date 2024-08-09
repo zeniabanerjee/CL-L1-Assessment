@@ -30,7 +30,7 @@ The project aims to develop a comprehensive project management system with robus
   - Assign specific roles to users such as Contributors and Reviewers.
   - Ensure project completion logic is enforced, requiring all tasks to be completed before marking the project as complete.
 - **Task Management:**
-  - Automatically generate initial tasks on program initialization.
+  - Automatically generate initial tasks (Group 1) on program initialization.
   - Enforce task group completion order, generating tasks from the next group only after the current group tasks are completed.
   - Allow specific personas to complete tasks, with tasks moving to completed status once done.
 - **User Role Management:**
@@ -38,6 +38,17 @@ The project aims to develop a comprehensive project management system with robus
   - Reflect role changes immediately in user permissions.
 
 </details>
+
+## Security Roles within the System
+### Admin
+- Only Admin can create, update, and delete projects.
+- Only Admin can assign staff to the project
+- No project should be created without a contributor, approver, and reviewer.
+
+### Approver
+- Only Approver can create, update, delete a task.
+- However, a task can only be marked as complete by the respective assigned user.
+
 
 ## API Documentation
 
