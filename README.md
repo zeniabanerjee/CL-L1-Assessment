@@ -2,7 +2,7 @@
 
 ### NOTE: If you are not able to create a branch and push to this origin, please fork this repoistory and make a Pull Request
 
-[Click here to fork this repo](https://https://github.com/CaravelLabs/CL-L1-Assessment/fork)
+[Click here to fork this repo](https://github.com/CaravelLabs/CL-L1-Assessment/fork)
 
 ## Table of Contents
 - [Task Details](#task-details)
