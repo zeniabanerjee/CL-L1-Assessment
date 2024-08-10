@@ -1,20 +1,35 @@
-import { MongoClient } from "mongodb";
-import bcrypt from "bcryptjs";
+import mongoose, { Schema, Document } from "mongoose";
 
-const client = new MongoClient(process.env.MONGO_URI as string);
-const db = client.db("project-management");
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  password: string;
+  userRole: "admin" | "contributor" | "reviewer" | "approver";
+  comparePassword(candidatePassword: string): Promise<boolean>;
+}
 
-export const findUserByEmail = async (email: string) => {
-  return db.collection("users").findOne({ email });
-};
+const UserSchema: Schema<IUser> = new Schema({
+  name: {
+    type: String,
+    required: [true, "Please provide a name"],
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: [true, "Please provide an email"],
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: [true, "Please provide a password"],
+    minlength: 8,
+    select: false, // Do not return password in queries
+  },
+  userRole: {
+    type: String,
+    enum: ["admin", "contributor", "reviewer", "approver"],
+    default: "contributor",
+  },
+});
 
-export const createUser = async (email: string, hashedPassword: string) => {
-  return db.collection("users").insertOne({ email, password: hashedPassword });
-};
-
-export const verifyPassword = async (
-  password: string,
-  hashedPassword: string
-) => {
-  return bcrypt.compare(password, hashedPassword);
-};
+export const UserModel = mongoose.model<IUser>("User", UserSchema);

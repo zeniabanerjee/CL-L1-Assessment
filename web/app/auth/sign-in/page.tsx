@@ -5,8 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import AuthInputComponent from "../ui/globals/inputs/authInputComponent";
-import { signInValidationResolver } from "../resolvers/authResolvers";
+import AuthInputComponent from "../../ui/globals/inputs/authInputComponent";
+import { signInValidationResolver } from "../../resolvers/authResolvers";
 
 type LogInType = {
   email: string;
