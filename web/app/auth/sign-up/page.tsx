@@ -34,7 +34,9 @@ export default function SignUpPage() {
           Project Management Tool
         </h1>
         <div className="flex flex-col items-center">
-          <h2 className={`text-2xl mb-3 font-semibold ${poppins.className}`}>
+          <h2
+            className={`md:text-2xl text-xl mb-3 font-semibold ${poppins.className}`}
+          >
             Create your own account
           </h2>
           <div>

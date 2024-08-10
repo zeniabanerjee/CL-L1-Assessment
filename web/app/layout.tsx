@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./ui/globals.css";
 
 export default function RootLayout({
