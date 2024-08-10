@@ -29,7 +29,7 @@ export default function SignInPage() {
     <FormProvider {...form}>
       <form
         onSubmit={(e) => form.handleSubmit(handeSubmit)(e)}
-        className="flex h-full items-center justify-center rlative flex-col gap-8 w-full md:w-2/3 xl:w-1/2 2xl:w-1/3 bg-white p-10 rounded-2xl"
+        className="flex h-full items-center justify-center rlative flex-col gap-8 w-full lg:w-1/2 bg-white p-10 rounded-2xl"
       >
         <h1 className={`text-center text-xl font-bold ${poppins.className}`}>
           Project Management Tool

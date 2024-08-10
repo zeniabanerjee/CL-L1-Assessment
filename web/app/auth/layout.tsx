@@ -3,9 +3,9 @@
 const SignInUpLayout = ({ children }: { children: React.ReactNode }) => {
   console.log("Layoout");
   return (
-    <div className="flex lg:flex-row flex-col h-screen w-screen items-center justify-center">
+    <div className="flex lg:flex-row flex-col h-screen w-screen ">
       <div
-        className="w-1/2 h-full hidden lg:block"
+        className="lg:w-1/2 h-full hidden lg:block"
         style={{
           backgroundImage: `url(${"/auth/banner.png"})`,
           backgroundAttachment: "fixed",

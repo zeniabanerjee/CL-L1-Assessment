@@ -28,7 +28,7 @@ export default function SignUpPage() {
     <FormProvider {...form}>
       <form
         onSubmit={(e) => form.handleSubmit(handeSubmit)(e)}
-        className="flex relative z-[1] flex-col gap-10 items-center justify-center w-full md:w-2/3 xl:w-1/2 2xl:w-1/3 bg-white p-10 rounded-2xl overflow-y-scroll"
+        className="flex relative z-[1] flex-col gap-10 items-center justify-center w-full lg:w-1/2 bg-white p-10 rounded-2xl overflow-y-scroll"
       >
         <h1 className={`text-center text-xl font-bold ${poppins.className}`}>
           Project Management Tool
