@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./ui/globals.css";
+import { UserContextProvider } from "./context/userContext";
 
 export default function RootLayout({
   children,
@@ -8,7 +9,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <UserContextProvider>{children}</UserContextProvider>
+      </body>
     </html>
   );
 }

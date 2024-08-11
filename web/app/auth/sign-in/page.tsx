@@ -8,6 +8,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import AuthInputComponent from "../../ui/globals/inputs/authInputComponent";
 import { signInValidationResolver } from "../../resolvers/authResolvers";
 import { poppins } from "@/app/helper/fonts";
+import { instance } from "@/app/helper/axiosInstance";
+import { Profile, UserContext } from "@/app/context/userContext";
 
 type LogInType = {
   email: string;
@@ -16,13 +18,22 @@ type LogInType = {
 
 export default function SignInPage() {
   const searchParams = useSearchParams();
-
+  const { setProfile } = useContext(UserContext);
   const form = useForm<LogInType>({
     resolver: yupResolver(signInValidationResolver),
   });
+  const router = useRouter();
+  const handeSubmit = async (formValues: LogInType) => {
+    const { data } = await instance.post("/auth/sign-in", formValues);
+    console.log(data);
+    if (data.success) {
+      console.log(data, "success");
 
-  const handeSubmit = (formValues: LogInType) => {
-    console.log(formValues);
+      setProfile(data.data);
+      localStorage.setItem("access_token", data.data.user.tokens.accessToken);
+      localStorage.setItem("refresh_token", data.data.user.tokens.refreshToken);
+      router.push("/projects");
+    }
   };
 
   return (

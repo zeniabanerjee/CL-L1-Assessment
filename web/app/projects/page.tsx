@@ -1,6 +1,12 @@
-import React from "react";
+"use client";
+
+import React, { useContext, useEffect, useState } from "react";
 import { RiEdit2Fill } from "react-icons/ri";
 import { MdOutlineDelete } from "react-icons/md";
+import { useRouter } from "next/navigation";
+import { instance } from "../helper/axiosInstance";
+import { UserContext } from "../context/userContext";
+import Loader from "../ui/globals/loader";
 
 const componentData = [
   {
@@ -150,6 +156,42 @@ const componentData = [
 ];
 
 export default function Projects() {
+  const router = useRouter();
+  const { setProfile } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function getprofile() {
+      try {
+        const accessToken = localStorage.getItem("access_token");
+
+        if (!accessToken) {
+          throw new Error("User not logged in!");
+        }
+
+        const res = await instance.get("/auth/profile");
+
+        console.log(res);
+        if (res.data.success) {
+          setLoading(false);
+
+          setProfile(res.data.data);
+        } else {
+          throw new Error("Unauthorized!");
+        }
+      } catch (error) {
+        localStorage.clear();
+        router.push("/auth/sign-in");
+      }
+    }
+
+    getprofile();
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <>
       {componentData.map((value, index) => {

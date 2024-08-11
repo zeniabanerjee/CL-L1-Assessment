@@ -1,9 +1,13 @@
 import "dotenv/config";
 
+console.log(process.env.NODEMAILER_EMAIL, process.env.NODEMAILER_PASSWORD);
+
 export default {
   MONGO_URI: process.env.MONGO_URI,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_SECRET_REFRESH: process.env.JWT_SECRET_REFRESH,
   JWT_EXPIRE: process.env.JWT_EXPIRE,
   JWT_EXPIRE_REFRESH: process.env.JWT_REFRESH_EXPIRE,
+  NODEMAILER_EMAIL: process.env.NODEMAILER_EMAIL,
+  NODEMAILER_PASSWORD: process.env.NODEMAILER_PASSWORD,
 };
