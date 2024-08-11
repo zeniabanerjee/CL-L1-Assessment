@@ -1,18 +1,25 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
+import cors from "cors";
 import authRouter from "./routes/userRoutes";
-import { error } from "console";
-
-console.log("Up and Running!");
+import logger from "./middleware/loggerMiddleware";
+import connectDB from "./config/databaseConnection";
 
 const app = express();
 
+connectDB();
+
+app.use(express.json());
+app.use(cors());
+app.use(logger);
 app.use(authRouter);
 
 app.get("/", (_, res) =>
   res.json({ message: "Up and Running", success: true })
 );
 
-app.use(error);
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  res.status(500).json({ message: err.message, success: false });
+});
 
 app.listen(4000, () => {
   console.log("Server Running on http://localhost:4000");

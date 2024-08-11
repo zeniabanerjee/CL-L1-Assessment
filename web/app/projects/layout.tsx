@@ -4,6 +4,7 @@ import { roboto } from "../helper/fonts";
 import { TreeSelect } from "antd";
 import "./projects.scss";
 import type { TreeSelectProps } from "antd";
+import ProjectForm from "../ui/project/projectForm";
 
 const treeData = [
   {
@@ -58,7 +59,7 @@ const ProjectsLayout = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
   const [value, setValue] = useState<string>();
-
+  const [createProjectPopup, setCreateProjectPopup] = useState<boolean>(false);
   const onChange = (newValue: string) => {
     setValue(newValue);
   };
@@ -69,6 +70,7 @@ const ProjectsLayout = ({
 
   return (
     <div className={`flex flex-col gap-1 ${roboto.className}`}>
+      {createProjectPopup && <ProjectForm onClose={setCreateProjectPopup} />}
       <nav className="flex flex-row justify-between items-center py-4  px-5 md:px-[4.3rem] md:py-[1.3rem] w-full">
         <div className="flex flex-row gap-1 ">
           <img src="/projects/home.svg" className="w-6 h-6" alt="home-image" />
@@ -117,7 +119,12 @@ const ProjectsLayout = ({
                 onPopupScroll={onPopupScroll}
               />
             </div>
-            <button className="p-[0.4rem]  rounded-xl bg-[#1890FF] text-white hover:bg-[#327bbe]">
+            <button
+              onClick={() => {
+                setCreateProjectPopup(true);
+              }}
+              className="p-[0.4rem]  rounded-xl bg-[#1890FF] text-white hover:bg-[#327bbe]"
+            >
               + New Project
             </button>
           </div>

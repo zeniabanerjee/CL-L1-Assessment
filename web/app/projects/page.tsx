@@ -1,4 +1,6 @@
 import React from "react";
+import { RiEdit2Fill } from "react-icons/ri";
+import { MdOutlineDelete } from "react-icons/md";
 
 const componentData = [
   {
@@ -169,17 +171,26 @@ export default function Projects() {
               <div className="completion"></div>
               {/* <img src="/projects/tick.svg" alt="" /> */}
             </div>
-            <div className="flex px-8 py-4">
-              {value.profileImage.slice(0, 4).map((data) => {
+            <div className="flex px-8 py-4 ">
+              {value.profileImage.slice(0, 4).map((data, index) => {
                 return (
                   <img
                     src={data}
+                    key={index}
                     height="40px"
                     width="40px"
                     className="rounded-full"
                   />
                 );
               })}
+            </div>
+            <div className="flex w-full  justify-center items-center">
+              <button className="w-1/2 flex justify-center p-3 items-center border-t-2 border-t-[#F3F6F8]  border-r-2 border-r-[#F3F6F8] ">
+                <RiEdit2Fill className="text-2xl" />
+              </button>
+              <button className="w-1/2 flex justify-center p-3 items-center border-t-2 border-t-[#F3F6F8] ">
+                <MdOutlineDelete className="text-2xl" />
+              </button>
             </div>
           </div>
         );
