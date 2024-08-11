@@ -11,5 +11,4 @@
 
 #!.yarn/cache
 .pnp.*
-src/server.ts
 /node_modules
