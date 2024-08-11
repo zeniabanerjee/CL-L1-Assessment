@@ -1,5 +1,6 @@
 import React from "react";
 import { ImCross } from "react-icons/im";
+import ProjectUserFilter from "./projectUserFilter";
 
 export default function ProjectForm({
   onClose,
@@ -29,22 +30,32 @@ export default function ProjectForm({
             You need to select a contributor, reviewer and approver to be able
             to create the project{" "}
           </p>
-          <div>
-            <div className="flex gap-4">
-              <div className="h-12 w-12 rounded-full overflow-hidden">
-                <img
-                  className="h-full w-full object-cover"
-                  src="/projects/profile2.svg"
-                  alt="profile-img"
-                />
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-4 justify-between items-center">
+              <div className="flex justify-start gap-2">
+                <div className="h-12 w-12 rounded-full  overflow-hidden">
+                  <img
+                    className="h-full w-full object-cover"
+                    src="/projects/profile2.svg"
+                    alt="profile-img"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p>Lucian Grey</p>
+                  <p className="text-gray-400">luciangrey02@gmail.com</p>
+                </div>
               </div>
-              <div className="flex flex-col gap-1">
-                <p>Lucian Grey</p>
-                <p className="text-gray-400">luciangrey02@gmail.com</p>
-              </div>
+              <p>Admin</p>
             </div>
-            <div></div>
+            <div className="flex flex-col gap-3">
+              <ProjectUserFilter type="Contributer" />
+              <ProjectUserFilter type="Reviewer" />
+              <ProjectUserFilter type="Approver" />
+            </div>
           </div>
+        </div>
+        <div className="flex justify-end mt-4">
+          <button className="py-2 px-6 rounded-xl bg-[#D9D9D9] ">Create</button>
         </div>
       </div>
     </div>
