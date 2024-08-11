@@ -19,6 +19,8 @@ app.get("/", (_, res) =>
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ message: err.message, success: false });
+
+  console.error(err);
 });
 
 app.listen(4000, () => {

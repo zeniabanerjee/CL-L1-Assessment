@@ -1,7 +1,9 @@
 {
   "name": "caravel-backend",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon  src/server.ts",
+    "build:watch": "tsc -w",
+    "dev:inspect": "nodemon --inspect dist/server.js"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
